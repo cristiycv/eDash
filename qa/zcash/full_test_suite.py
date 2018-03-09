@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 #
-# Execute all of the automated tests related to Zcash.
+# Execute all of the automated tests related to edash.
 #
 
 import argparse
@@ -31,7 +31,7 @@ RE_FORTIFY_USED = re.compile('Binary compiled with FORTIFY_SOURCE support.*Yes')
 
 def test_rpath_runpath(filename):
     output = subprocess.check_output(
-        [repofile('qa/zcash/checksec.sh'), '--file', repofile(filename)]
+        [repofile('qa/edash/checksec.sh'), '--file', repofile(filename)]
     )
     if RE_RPATH_RUNPATH.search(output):
         print('PASS: %s has no RPATH or RUNPATH.' % filename)
@@ -43,7 +43,7 @@ def test_rpath_runpath(filename):
 
 def test_fortify_source(filename):
     proc = subprocess.Popen(
-        [repofile('qa/zcash/checksec.sh'), '--fortify-file', repofile(filename)],
+        [repofile('qa/edash/checksec.sh'), '--fortify-file', repofile(filename)],
         stdout=subprocess.PIPE,
     )
     line1 = proc.stdout.readline()
@@ -62,21 +62,21 @@ def check_security_hardening():
     # PIE, RELRO, Canary, and NX are tested by make check-security.
     ret &= subprocess.call(['make', '-C', repofile('src'), 'check-security']) == 0
 
-    ret &= test_rpath_runpath('src/zcashd')
-    ret &= test_rpath_runpath('src/zcash-cli')
-    ret &= test_rpath_runpath('src/zcash-gtest')
-    ret &= test_rpath_runpath('src/zcash-tx')
+    ret &= test_rpath_runpath('src/edashd')
+    ret &= test_rpath_runpath('src/edash-cli')
+    ret &= test_rpath_runpath('src/edash-gtest')
+    ret &= test_rpath_runpath('src/edash-tx')
     ret &= test_rpath_runpath('src/test/test_bitcoin')
-    ret &= test_rpath_runpath('src/zcash/GenerateParams')
+    ret &= test_rpath_runpath('src/edash/GenerateParams')
 
     # NOTE: checksec.sh does not reliably determine whether FORTIFY_SOURCE
     # is enabled for the entire binary. See issue #915.
-    ret &= test_fortify_source('src/zcashd')
-    ret &= test_fortify_source('src/zcash-cli')
-    ret &= test_fortify_source('src/zcash-gtest')
-    ret &= test_fortify_source('src/zcash-tx')
+    ret &= test_fortify_source('src/edashd')
+    ret &= test_fortify_source('src/edash-cli')
+    ret &= test_fortify_source('src/edash-gtest')
+    ret &= test_fortify_source('src/edash-tx')
     ret &= test_fortify_source('src/test/test_bitcoin')
-    ret &= test_fortify_source('src/zcash/GenerateParams')
+    ret &= test_fortify_source('src/edash/GenerateParams')
 
     return ret
 
@@ -136,7 +136,7 @@ STAGES = [
 
 STAGE_COMMANDS = {
     'btest': [repofile('src/test/test_bitcoin'), '-p'],
-    'gtest': [repofile('src/zcash-gtest')],
+    'gtest': [repofile('src/edash-gtest')],
     'sec-hard': check_security_hardening,
     'no-dot-so': ensure_no_dot_so_in_depends,
     'util-test': util_test,

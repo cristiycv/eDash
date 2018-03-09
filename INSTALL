@@ -1,5 +1,5 @@
-Building Zcash
+Building edash
 
-See the Zcash github wiki (https://github.com/zcash/zcash/wiki) for instructions on building zcashd,
+See the edash github wiki (https://github.com/edash/edash/wiki) for instructions on building edashd,
 the intended-for-services, no-graphical-interface, reference
-implementation of Zcash.
+implementation of edash.

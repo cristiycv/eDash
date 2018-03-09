@@ -5,9 +5,9 @@
 #include "version.h"
 #include "streams.h"
 
-#include "zcash/util.h"
+#include "edash/util.h"
 
-namespace libzcash {
+namespace libedash {
 
 Note::Note() {
     a_pk = random_uint256();

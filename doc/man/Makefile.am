@@ -1,1 +1,1 @@
-dist_man1_MANS=zcashd.1 zcash-cli.1 zcash-fetch-params.1 zcash-tx.1
+dist_man1_MANS=edashd.1 edash-cli.1 edash-fetch-params.1 edash-tx.1

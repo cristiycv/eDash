@@ -357,26 +357,26 @@ DATA_TYPE CZCEncoding<DATA_TYPE, PREFIX, SER_SIZE>::Get() const
     return ret;
 }
 
-// Explicit instantiations for libzcash::PaymentAddress
-template bool CZCEncoding<libzcash::PaymentAddress,
+// Explicit instantiations for libedash::PaymentAddress
+template bool CZCEncoding<libedash::PaymentAddress,
                           CChainParams::ZCPAYMENT_ADDRRESS,
-                          libzcash::SerializedPaymentAddressSize>::Set(const libzcash::PaymentAddress& addr);
-template libzcash::PaymentAddress CZCEncoding<libzcash::PaymentAddress,
+                          libedash::SerializedPaymentAddressSize>::Set(const libedash::PaymentAddress& addr);
+template libedash::PaymentAddress CZCEncoding<libedash::PaymentAddress,
                                               CChainParams::ZCPAYMENT_ADDRRESS,
-                                              libzcash::SerializedPaymentAddressSize>::Get() const;
+                                              libedash::SerializedPaymentAddressSize>::Get() const;
 
-// Explicit instantiations for libzcash::ViewingKey
-template bool CZCEncoding<libzcash::ViewingKey,
+// Explicit instantiations for libedash::ViewingKey
+template bool CZCEncoding<libedash::ViewingKey,
                           CChainParams::ZCVIEWING_KEY,
-                          libzcash::SerializedViewingKeySize>::Set(const libzcash::ViewingKey& vk);
-template libzcash::ViewingKey CZCEncoding<libzcash::ViewingKey,
+                          libedash::SerializedViewingKeySize>::Set(const libedash::ViewingKey& vk);
+template libedash::ViewingKey CZCEncoding<libedash::ViewingKey,
                                           CChainParams::ZCVIEWING_KEY,
-                                          libzcash::SerializedViewingKeySize>::Get() const;
+                                          libedash::SerializedViewingKeySize>::Get() const;
 
-// Explicit instantiations for libzcash::SpendingKey
-template bool CZCEncoding<libzcash::SpendingKey,
+// Explicit instantiations for libedash::SpendingKey
+template bool CZCEncoding<libedash::SpendingKey,
                           CChainParams::ZCSPENDING_KEY,
-                          libzcash::SerializedSpendingKeySize>::Set(const libzcash::SpendingKey& sk);
-template libzcash::SpendingKey CZCEncoding<libzcash::SpendingKey,
+                          libedash::SerializedSpendingKeySize>::Set(const libedash::SpendingKey& sk);
+template libedash::SpendingKey CZCEncoding<libedash::SpendingKey,
                                            CChainParams::ZCSPENDING_KEY,
-                                           libzcash::SerializedSpendingKeySize>::Get() const;
+                                           libedash::SerializedSpendingKeySize>::Get() const;

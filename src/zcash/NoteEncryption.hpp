@@ -1,6 +1,6 @@
 /*
-See the Zcash protocol specification for more information.
-https://github.com/zcash/zips/blob/master/protocol/protocol.pdf
+See the edash protocol specification for more information.
+https://github.com/edash/zips/blob/master/protocol/protocol.pdf
 */
 
 #ifndef ZC_NOTE_ENCRYPTION_H_
@@ -10,9 +10,9 @@ https://github.com/zcash/zips/blob/master/protocol/protocol.pdf
 #include "uint256.h"
 #include "uint252.h"
 
-#include "zcash/Zcash.h"
+#include "edash/edash.h"
 
-namespace libzcash {
+namespace libedash {
 
 #define NOTEENCRYPTION_AUTH_BYTES 16
 
@@ -117,9 +117,9 @@ public:
 
 }
 
-typedef libzcash::NoteEncryption<ZC_NOTEPLAINTEXT_SIZE> ZCNoteEncryption;
-typedef libzcash::NoteDecryption<ZC_NOTEPLAINTEXT_SIZE> ZCNoteDecryption;
+typedef libedash::NoteEncryption<ZC_NOTEPLAINTEXT_SIZE> ZCNoteEncryption;
+typedef libedash::NoteDecryption<ZC_NOTEPLAINTEXT_SIZE> ZCNoteDecryption;
 
-typedef libzcash::PaymentDisclosureNoteDecryption<ZC_NOTEPLAINTEXT_SIZE> ZCPaymentDisclosureNoteDecryption;
+typedef libedash::PaymentDisclosureNoteDecryption<ZC_NOTEPLAINTEXT_SIZE> ZCPaymentDisclosureNoteDecryption;
 
 #endif /* ZC_NOTE_ENCRYPTION_H_ */

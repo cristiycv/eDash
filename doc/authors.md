@@ -1,4 +1,4 @@
-Zcash Contributors
+edash Contributors
 ==================
 
 Jack Grigg (601)

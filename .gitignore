@@ -2,18 +2,18 @@
 *.deb
 *.exe
 src/bitcoin
-src/zcashd
-src/zcash-cli
-src/zcash-gtest
-src/zcash-tx
+src/edashd
+src/edash-cli
+src/edash-gtest
+src/edash-tx
 src/test/test_bitcoin
 
-# Zcash utilities
-src/zcash/GenerateParams
-src/zcash/CreateJoinSplit
+# edash utilities
+src/edash/GenerateParams
+src/edash/CreateJoinSplit
 
-*zcashTest.pk
-*zcashTest.vk
+*edashTest.pk
+*edashTest.vk
 
 # autoreconf
 Makefile.in
@@ -56,7 +56,7 @@ src/univalue/gen
 *.pyc
 *.o
 *.o-*
-.zcash
+.edash
 *.a
 *.pb.cc
 *.pb.h
@@ -92,7 +92,7 @@ build
 *.gcda
 /*.info
 test_bitcoin.coverage/
-zcash-gtest.coverage/
+edash-gtest.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -109,7 +109,7 @@ qa/pull-tester/test.*/*
 
 /doc/doxygen/
 
-libzcashconsensus.pc
+libedashconsensus.pc
 
 contrib/debian/files
 contrib/debian/substvars

@@ -17,7 +17,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/unordered_map.hpp>
-#include "zcash/IncrementalMerkleTree.hpp"
+#include "edash/IncrementalMerkleTree.hpp"
 
 /** 
  * Pruned version of CTransaction: only retains metadata and unspent transaction outputs

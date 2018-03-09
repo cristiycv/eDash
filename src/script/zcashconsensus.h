@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_ZCASHCONSENSUS_H
-#define BITCOIN_ZCASHCONSENSUS_H
+#ifndef BITCOIN_edashCONSENSUS_H
+#define BITCOIN_edashCONSENSUS_H
 
 #include <stdint.h>
 
@@ -21,7 +21,7 @@
   #elif defined(HAVE_FUNC_ATTRIBUTE_VISIBILITY)
     #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
   #endif
-#elif defined(MSC_VER) && !defined(STATIC_LIBZCASHCONSENSUS)
+#elif defined(MSC_VER) && !defined(STATIC_LIBedashCONSENSUS)
   #define EXPORT_SYMBOL __declspec(dllimport)
 #endif
 
@@ -33,33 +33,33 @@
 extern "C" {
 #endif
 
-#define ZCASHCONSENSUS_API_VER 0
+#define edashCONSENSUS_API_VER 0
 
-typedef enum zcashconsensus_error_t
+typedef enum edashconsensus_error_t
 {
-    zcashconsensus_ERR_OK = 0,
-    zcashconsensus_ERR_TX_INDEX,
-    zcashconsensus_ERR_TX_SIZE_MISMATCH,
-    zcashconsensus_ERR_TX_DESERIALIZE,
-} zcashconsensus_error;
+    edashconsensus_ERR_OK = 0,
+    edashconsensus_ERR_TX_INDEX,
+    edashconsensus_ERR_TX_SIZE_MISMATCH,
+    edashconsensus_ERR_TX_DESERIALIZE,
+} edashconsensus_error;
 
 /** Script verification flags */
 enum
 {
-    zcashconsensus_SCRIPT_FLAGS_VERIFY_NONE                = 0,
-    zcashconsensus_SCRIPT_FLAGS_VERIFY_P2SH                = (1U << 0), // evaluate P2SH (BIP16) subscripts
-    zcashconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY = (1U << 9), // enable CHECKLOCKTIMEVERIFY (BIP65)
+    edashconsensus_SCRIPT_FLAGS_VERIFY_NONE                = 0,
+    edashconsensus_SCRIPT_FLAGS_VERIFY_P2SH                = (1U << 0), // evaluate P2SH (BIP16) subscripts
+    edashconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY = (1U << 9), // enable CHECKLOCKTIMEVERIFY (BIP65)
 };
 
 /// Returns 1 if the input nIn of the serialized transaction pointed to by
 /// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
 /// the additional constraints specified by flags.
 /// If not NULL, err will contain an error/success code for the operation
-EXPORT_SYMBOL int zcashconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
+EXPORT_SYMBOL int edashconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
                                     const unsigned char *txTo        , unsigned int txToLen,
-                                    unsigned int nIn, unsigned int flags, zcashconsensus_error* err);
+                                    unsigned int nIn, unsigned int flags, edashconsensus_error* err);
 
-EXPORT_SYMBOL unsigned int zcashconsensus_version();
+EXPORT_SYMBOL unsigned int edashconsensus_version();
 
 #ifdef __cplusplus
 } // extern "C"
@@ -67,4 +67,4 @@ EXPORT_SYMBOL unsigned int zcashconsensus_version();
 
 #undef EXPORT_SYMBOL
 
-#endif // BITCOIN_ZCASHCONSENSUS_H
+#endif // BITCOIN_edashCONSENSUS_H

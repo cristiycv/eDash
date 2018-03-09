@@ -1,9 +1,9 @@
-// Copyright (c) 2017 The Zcash developers
+// Copyright (c) 2017 The edash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ZCASH_DEPRECATION_H
-#define ZCASH_DEPRECATION_H
+#ifndef edash_DEPRECATION_H
+#define edash_DEPRECATION_H
 
 // Deprecation policy:
 // * Shut down 16 weeks' worth of blocks after the estimated release block height.
@@ -22,4 +22,4 @@ static const int DEPRECATION_WARN_LIMIT = 14 * 24 * 24; // 2 weeks
  */
 void EnforceNodeDeprecation(int nHeight, bool forceLogging=false);
 
-#endif // ZCASH_DEPRECATION_H
+#endif // edash_DEPRECATION_H

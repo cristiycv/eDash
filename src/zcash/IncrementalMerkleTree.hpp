@@ -8,9 +8,9 @@
 #include "uint256.h"
 #include "serialize.h"
 
-#include "Zcash.h"
+#include "edash.h"
 
-namespace libzcash {
+namespace libedash {
 
 class MerklePath {
 public:
@@ -194,12 +194,12 @@ public:
     static SHA256Compress combine(const SHA256Compress& a, const SHA256Compress& b);
 };
 
-} // end namespace `libzcash`
+} // end namespace `libedash`
 
-typedef libzcash::IncrementalMerkleTree<INCREMENTAL_MERKLE_TREE_DEPTH, libzcash::SHA256Compress> ZCIncrementalMerkleTree;
-typedef libzcash::IncrementalMerkleTree<INCREMENTAL_MERKLE_TREE_DEPTH_TESTING, libzcash::SHA256Compress> ZCTestingIncrementalMerkleTree;
+typedef libedash::IncrementalMerkleTree<INCREMENTAL_MERKLE_TREE_DEPTH, libedash::SHA256Compress> ZCIncrementalMerkleTree;
+typedef libedash::IncrementalMerkleTree<INCREMENTAL_MERKLE_TREE_DEPTH_TESTING, libedash::SHA256Compress> ZCTestingIncrementalMerkleTree;
 
-typedef libzcash::IncrementalWitness<INCREMENTAL_MERKLE_TREE_DEPTH, libzcash::SHA256Compress> ZCIncrementalWitness;
-typedef libzcash::IncrementalWitness<INCREMENTAL_MERKLE_TREE_DEPTH_TESTING, libzcash::SHA256Compress> ZCTestingIncrementalWitness;
+typedef libedash::IncrementalWitness<INCREMENTAL_MERKLE_TREE_DEPTH, libedash::SHA256Compress> ZCIncrementalWitness;
+typedef libedash::IncrementalWitness<INCREMENTAL_MERKLE_TREE_DEPTH_TESTING, libedash::SHA256Compress> ZCTestingIncrementalWitness;
 
 #endif /* ZC_INCREMENTALMERKLETREE_H_ */

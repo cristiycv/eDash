@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The Zcash developers
+// Copyright (c) 2018 The edash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ZCASH_CONSENSUS_UPGRADES_H
-#define ZCASH_CONSENSUS_UPGRADES_H
+#ifndef edash_CONSENSUS_UPGRADES_H
+#define edash_CONSENSUS_UPGRADES_H
 
 #include "consensus/params.h"
 
@@ -87,4 +87,4 @@ boost::optional<int> NextActivationHeight(
     int nHeight,
     const Consensus::Params& params);
 
-#endif // ZCASH_CONSENSUS_UPGRADES_H
+#endif // edash_CONSENSUS_UPGRADES_H
