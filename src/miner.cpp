@@ -349,7 +349,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         txNew.nExpiryHeight = 0;
 
         if ((nHeight > 0) && (nHeight <= chainparams.GetConsensus().GetLastFoundersRewardBlockHeight())) {
-            // Founders reward is 20% of the block subsidy
+            // Founders reward is 10% of the block subsidy, this reward is used for improvement ( development, marketing. etc)
             auto vFoundersReward = txNew.vout[0].nValue / 5;
             // Take some reward away from us
             txNew.vout[0].nValue -= vFoundersReward;
