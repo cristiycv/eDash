@@ -132,9 +132,9 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("z.cash", "dnsseed.edash.cash")); // edash
-        vSeeds.push_back(CDNSSeedData("str4d.xyz", "dnsseed.edash.cash")); // @str4d
-        vSeeds.push_back(CDNSSeedData("znodes.org", "dnsseed.znodes.org")); // @bitcartel
+        vSeeds.push_back(CDNSSeedData("node1", "dnsseed.edash.cash")); // edash
+        vSeeds.push_back(CDNSSeedData("node2", "dnsseed.edash.network")); // @str4d
+        vSeeds.push_back(CDNSSeedData("node3", "dnsseed.enodes.org")); // @bitcartel
 
         // guarantees the first 2 characters, when base58 encoded, are "t1"
         base58Prefixes[PUBKEY_ADDRESS]     = {0x1C,0xB8};
@@ -289,7 +289,7 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("z.cash", "dnsseed.testnet.edash.cash")); // edash
+        vSeeds.push_back(CDNSSeedData("edash.cash", "dnsseed.testnet.edash.cash")); // edash
 
         // guarantees the first 2 characters, when base58 encoded, are "tm"
         base58Prefixes[PUBKEY_ADDRESS]     = {0x1D,0x25};
