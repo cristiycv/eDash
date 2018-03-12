@@ -348,14 +348,14 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         // Set to 0 so expiry height does not apply to coinbase txs
         txNew.nExpiryHeight = 0;
 
-        if ((nHeight > 0) && (nHeight <= chainparams.GetConsensus().GetLastFoundersRewardBlockHeight())) {
+        if ((nHeight > 0) && (nHeight <= chainparams.GetConsensus().GetLastCommunityRewardBlockHeight())) {
             // Founders reward is 10% of the block subsidy, this reward is used for improvement ( development, marketing. etc)
-            auto vFoundersReward = txNew.vout[0].nValue / 5;
+            auto vCommunityReward = txNew.vout[0].nValue / 5;
             // Take some reward away from us
-            txNew.vout[0].nValue -= vFoundersReward;
+            txNew.vout[0].nValue -= vCommunityReward;
 
             // And give it to the founders
-            txNew.vout.push_back(CTxOut(vFoundersReward, chainparams.GetFoundersRewardScriptAtHeight(nHeight)));
+            txNew.vout.push_back(CTxOut(vCommunityReward, chainparams.GetCommunityRewardScriptAtHeight(nHeight)));
         }
 
         // Add fees

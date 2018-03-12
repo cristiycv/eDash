@@ -897,13 +897,13 @@ UniValue getblocksubsidy(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Block height out of range");
 
     CAmount nReward = GetBlockSubsidy(nHeight, Params().GetConsensus());
-    CAmount nFoundersReward = 0;
-    if ((nHeight > 0) && (nHeight <= Params().GetConsensus().GetLastFoundersRewardBlockHeight())) {
-        nFoundersReward = nReward/5;
-        nReward -= nFoundersReward;
+    CAmount nCommunityReward = 0;
+    if ((nHeight > 0) && (nHeight <= Params().GetConsensus().GetLastCommunityRewardBlockHeight())) {
+        nCommunityReward = nReward/5;
+        nReward -= nCommunityReward;
     }
     UniValue result(UniValue::VOBJ);
     result.push_back(Pair("miner", ValueFromAmount(nReward)));
-    result.push_back(Pair("founders", ValueFromAmount(nFoundersReward)));
+    result.push_back(Pair("founders", ValueFromAmount(nCommunityReward)));
     return result;
 }

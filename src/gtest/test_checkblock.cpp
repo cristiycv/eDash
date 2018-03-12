@@ -48,7 +48,7 @@ TEST(CheckBlock, BlockSproutRejectsBadVersion) {
     mtx.vout[0].nValue = 0;
     mtx.vout.push_back(CTxOut(
         GetBlockSubsidy(1, Params().GetConsensus())/5,
-        Params().GetFoundersRewardScriptAtHeight(1)));
+        Params().GetCommunityRewardScriptAtHeight(1)));
     mtx.fOverwintered = false;
     mtx.nVersion = -1;
     mtx.nVersionGroupId = 0;
@@ -87,7 +87,7 @@ TEST(ContextualCheckBlock, BadCoinbaseHeight) {
     EXPECT_TRUE(ContextualCheckBlock(block, state, NULL));
 
     // Treating block as non-genesis should fail
-    mtx.vout.push_back(CTxOut(GetBlockSubsidy(1, Params().GetConsensus())/5, Params().GetFoundersRewardScriptAtHeight(1)));
+    mtx.vout.push_back(CTxOut(GetBlockSubsidy(1, Params().GetConsensus())/5, Params().GetCommunityRewardScriptAtHeight(1)));
     CTransaction tx2 {mtx};
     block.vtx[0] = tx2;
     CBlock prev;
@@ -153,7 +153,7 @@ TEST(ContextualCheckBlock, BlockSproutRulesAcceptSproutTx) {
     mtx.vout[0].nValue = 0;
     mtx.vout.push_back(CTxOut(
         GetBlockSubsidy(1, Params().GetConsensus())/5,
-        Params().GetFoundersRewardScriptAtHeight(1)));
+        Params().GetCommunityRewardScriptAtHeight(1)));
     mtx.fOverwintered = false;
     mtx.nVersion = 1;
 
@@ -184,7 +184,7 @@ TEST(ContextualCheckBlock, BlockOverwinterRulesAcceptOverwinterTx) {
     mtx.vout[0].nValue = 0;
     mtx.vout.push_back(CTxOut(
         GetBlockSubsidy(1, Params().GetConsensus())/5,
-        Params().GetFoundersRewardScriptAtHeight(1)));
+        Params().GetCommunityRewardScriptAtHeight(1)));
     mtx.fOverwintered = true;
     mtx.nVersion = 3;
     mtx.nVersionGroupId = OVERWINTER_VERSION_GROUP_ID;

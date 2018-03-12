@@ -102,7 +102,7 @@ Simon (20):
       Update founders reward test to output path of temporary wallet.dat file which contains keys which can be used for testing founders reward addresses.
       Update testnet founders reward addresses
       Add mainnet 2-of-3 multisig addresses for testing.
-      Add field fMinerTestModeForFoundersRewardScript to chainparams
+      Add field fMinerTestModeForCommunityRewardScript to chainparams
       Update mainnet addresses used for testing to have the correct number
       Fixes #1345 so that UTXO debit and credits are computed correctly for a transaction.
       Closes #1371 by updating signed message
