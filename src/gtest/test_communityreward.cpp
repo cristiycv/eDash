@@ -15,7 +15,7 @@
 #include "util.h"
 
 // To run tests:
-// ./edash-gtest --gtest_filter="founders_reward_test.*"
+// ./edash-gtest --gtest_filter="community_reward_test.*"
 
 //
 // Enable this test to generate and print 48 testnet 2-of-3 multisig addresses.
@@ -23,7 +23,7 @@
 // The temporary wallet file can be renamed as wallet.dat and used for testing with edashd.
 //
 #if 0
-TEST(founders_reward_test, create_testnet_2of3multisig) {
+TEST(community_reward_test, create_testnet_2of3multisig) {
     ECC_Start();
     SelectParams(CBaseChainParams::TESTNET);
     boost::filesystem::path pathTemp = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
@@ -34,7 +34,7 @@ TEST(founders_reward_test, create_testnet_2of3multisig) {
     ASSERT_EQ(DB_LOAD_OK, pWallet->LoadWallet(fFirstRun));
     pWallet->TopUpKeyPool();
     std::cout << "Test wallet and logs saved in folder: " << pathTemp.native() << std::endl;
-    
+
     int numKeys = 48;
     std::vector<CPubKey> pubkeys;
     pubkeys.resize(3);
@@ -62,7 +62,7 @@ TEST(founders_reward_test, create_testnet_2of3multisig) {
         std::string address = CBitcoinAddress(innerID).ToString();
         addresses.push_back(address);
     }
-    
+
     // Print out the addresses, 4 on each line.
     std::string s = "vCommunityRewardAddress = {\n";
     int i=0;
@@ -97,11 +97,11 @@ void checkNumberOfUniqueAddresses(int nUnique) {
 }
 
 
-TEST(founders_reward_test, general) {
+TEST(community_reward_test, general) {
     SelectParams(CBaseChainParams::TESTNET);
 
     CChainParams params = Params();
-    
+
     // Fourth testnet reward:
     // address = t2ENg7hHVqqs9JwU5cgjvSbxnT2a9USNfhy
     // script.ToString() = OP_HASH160 55d64928e69829d9376c776550b6cc710d427153 OP_EQUAL
@@ -114,18 +114,18 @@ TEST(founders_reward_test, general) {
     EXPECT_EQ(params.GetCommunityRewardAddressAtHeight(53127), "t2ENg7hHVqqs9JwU5cgjvSbxnT2a9USNfhy");
 
     int maxHeight = params.GetConsensus().GetLastCommunityRewardBlockHeight();
-    
+
     // If the block height parameter is out of bounds, there is an assert.
     EXPECT_DEATH(params.GetCommunityRewardScriptAtHeight(0), "nHeight");
     EXPECT_DEATH(params.GetCommunityRewardScriptAtHeight(maxHeight+1), "nHeight");
     EXPECT_DEATH(params.GetCommunityRewardAddressAtHeight(0), "nHeight");
-    EXPECT_DEATH(params.GetCommunityRewardAddressAtHeight(maxHeight+1), "nHeight"); 
+    EXPECT_DEATH(params.GetCommunityRewardAddressAtHeight(maxHeight+1), "nHeight");
 }
 
 
 #define NUM_MAINNET_FOUNDER_ADDRESSES 48
 
-TEST(founders_reward_test, mainnet) {
+TEST(community_reward_test, mainnet) {
     SelectParams(CBaseChainParams::MAIN);
     checkNumberOfUniqueAddresses(NUM_MAINNET_FOUNDER_ADDRESSES);
 }
@@ -133,7 +133,7 @@ TEST(founders_reward_test, mainnet) {
 
 #define NUM_TESTNET_FOUNDER_ADDRESSES 48
 
-TEST(founders_reward_test, testnet) {
+TEST(community_reward_test, testnet) {
     SelectParams(CBaseChainParams::TESTNET);
     checkNumberOfUniqueAddresses(NUM_TESTNET_FOUNDER_ADDRESSES);
 }
@@ -141,26 +141,26 @@ TEST(founders_reward_test, testnet) {
 
 #define NUM_REGTEST_FOUNDER_ADDRESSES 1
 
-TEST(founders_reward_test, regtest) {
+TEST(community_reward_test, regtest) {
     SelectParams(CBaseChainParams::REGTEST);
     checkNumberOfUniqueAddresses(NUM_REGTEST_FOUNDER_ADDRESSES);
 }
 
 
 
-// Test that 10% founders reward is fully rewarded after the first halving and slow start shift.
+// Test that 10% founders reward is fully rewarded.
 // On Mainnet, this would be 2,100,000 ZEC after 850,000 blocks (840,000 + 10,000).
-TEST(founders_reward_test, slow_start_subsidy) {
+TEST(community_reward_test, slow_start_subsidy) {
     SelectParams(CBaseChainParams::MAIN);
     CChainParams params = Params();
 
-    int maxHeight = params.GetConsensus().GetLastCommunityRewardBlockHeight();    
+    int maxHeight = params.GetConsensus().GetLastCommunityRewardBlockHeight();
     CAmount totalSubsidy = 0;
     for (int nHeight = 1; nHeight <= maxHeight; nHeight++) {
         CAmount nSubsidy = GetBlockSubsidy(nHeight, params.GetConsensus()) / 5;
         totalSubsidy += nSubsidy;
     }
-    
+
     ASSERT_TRUE(totalSubsidy == MAX_MONEY/10.0);
 }
 
@@ -183,13 +183,13 @@ void verifyNumberOfRewards() {
 }
 
 // Verify the number of rewards going to each mainnet address
-TEST(founders_reward_test, per_address_reward_mainnet) {
+TEST(community_reward_test, per_address_reward_mainnet) {
     SelectParams(CBaseChainParams::MAIN);
     verifyNumberOfRewards();
 }
 
 // Verify the number of rewards going to each testnet address
-TEST(founders_reward_test, per_address_reward_testnet) {
+TEST(community_reward_test, per_address_reward_testnet) {
     SelectParams(CBaseChainParams::TESTNET);
     verifyNumberOfRewards();
 }
